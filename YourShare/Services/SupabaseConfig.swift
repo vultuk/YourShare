@@ -6,28 +6,10 @@
 import Foundation
 
 enum SupabaseConfig {
-    // These values should be configured via environment or Info.plist
-    // For now, they can be set here or loaded from configuration
-    static var projectURL: String {
-        // Try to load from Info.plist first
-        if let url = Bundle.main.object(forInfoDictionaryKey: "SUPABASE_URL") as? String, !url.isEmpty {
-            return url
-        }
-        // Fallback to environment variable or default
-        return ProcessInfo.processInfo.environment["SUPABASE_URL"] ?? ""
-    }
-
-    static var anonKey: String {
-        // Try to load from Info.plist first
-        if let key = Bundle.main.object(forInfoDictionaryKey: "SUPABASE_ANON_KEY") as? String, !key.isEmpty {
-            return key
-        }
-        // Fallback to environment variable or default
-        return ProcessInfo.processInfo.environment["SUPABASE_ANON_KEY"] ?? ""
-    }
+    static let projectURL = "https://lmtwvioutznspggclasv.supabase.co"
+    static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxtdHd2aW91dHpuc3BnZ2NsYXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NDQyNTMsImV4cCI6MjA4MTAyMDI1M30.ZQ2Q6d-Bnn5oNW2VasZlrsUoq21gwWXE9n2mhpmt1TQ"
 
     static var baseURL: URL? {
-        guard !projectURL.isEmpty else { return nil }
-        return URL(string: "\(projectURL)/rest/v1")
+        URL(string: "\(projectURL)/rest/v1")
     }
 }

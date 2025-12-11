@@ -6,7 +6,7 @@
 import Foundation
 
 struct FundEntry: Codable, Identifiable {
-    let id: Int
+    let id: UUID
     let month: String
     let profitPct: Double
     let feePct: Double

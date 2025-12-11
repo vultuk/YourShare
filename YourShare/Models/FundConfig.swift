@@ -6,11 +6,15 @@
 import Foundation
 
 struct FundConfig: Codable, Identifiable {
-    let id: Int
-    let initialPool: Double
+    let key: String
+    let value: Double
+
+    var id: String { key }
+
+    var initialPool: Double { value }
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case initialPool = "initial_pool"
+        case key
+        case value
     }
 }
