@@ -14,7 +14,8 @@ export function calculateInvestmentValue(
     const withdrawals = Number(entry.withdrawals) || 0;
 
     // Calculate profit after fees
-    const profit = fundTotal * (profitPct / 100) * (1 - feePct / 100);
+    // profit_pct and fee_pct are stored as decimals (e.g., 0.0133 = 1.33%)
+    const profit = fundTotal * (profitPct * (1 - feePct));
 
     // Apply withdrawals and add profit
     fundTotal = (fundTotal - withdrawals) + profit;
